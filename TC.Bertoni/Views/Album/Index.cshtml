@@ -1,0 +1,60 @@
+﻿@model List<TC.Bertoni.Interface.Models.AlbumDTO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@TC.Bertoni.Resources.Global.TCHeader</h1>
+
+<h2>Albums</h2>
+<div class="row">
+    <div class="col-md-1">
+        @TC.Bertoni.Resources.Album.AlbumText
+    </div>
+    <div class="col-md-5">
+        @Html.DropDownList("albums", new SelectList(Model, "Id", "Title"), new { @class = "form-control" })
+    </div>
+    <div class="col-md-2">
+        <input type="button" id="btnViewAlbums" value="@TC.Bertoni.Resources.Album.SelectAlbum" />
+    </div>
+</div>
+
+<div class="row">
+    <div id="divPhotos">
+    </div>
+</div>
+
+<div class="row">
+    <div id="divComments">
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnViewAlbums').click(function () {
+                $('#divPhotos').empty();
+                $('#divComments').empty();
+                var albumID = $('#albums').val();
+                console.log("Album selected: " + albumID);
+                $('#divPhotos').load('/Photo/GetPhotoByAlbumId/${albumID}');
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/Photo/GetPhotoByAlbumId/',
+                    data: { "albumId": albumID },
+                    success: function (dataResult) {
+                        $('#divPhotos').html(dataResult);
+                    },
+                    error: function (ex) {
+                        console.log(ex);
+                    }
+                });
+
+            });
+        });
+    </script>
+}
+
+

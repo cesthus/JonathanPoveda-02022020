@@ -1,0 +1,23 @@
+﻿@model List<TC.Bertoni.Interface.Models.PhotoDTO>
+
+<table class="table-responsive">
+    <thead>
+        <tr>
+            <th>@TC.Bertoni.Resources.Photo.Title</th>
+            <th>@TC.Bertoni.Resources.Photo.Url</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var photo in Model)
+        {
+            <tr>
+                <td>@photo.title</td>
+                <td>@photo.url</td>
+                <td>
+                    @Html.ActionLink(@TC.Bertoni.Resources.Photo.ViewComments, "Comment", "GetCommentsByPhoto", new { photoId = photo.id });
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

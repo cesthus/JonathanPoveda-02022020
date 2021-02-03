@@ -1,0 +1,11 @@
+﻿@model List<TC.Bertoni.Interface.Models.CommentDTO>
+
+<div class="row">
+    <h6>@TC.Bertoni.Resources.Comment.TitleSection</h6>
+    @foreach (var comment in Model)
+    {
+        <div class="col-md-12">
+            <p>@comment.name</p>
+        </div>
+    }
+</div>

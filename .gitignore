@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/TC.Bertoni/.vs/TC.Bertoni
+/TC.Bertoni/bin
+/TC.Bertoni/obj/Debug
+/TC.Bertoni/packages
+/TC.Bertoni.Interface/bin/Debug
+/TC.Bertoni.Interface/obj/Debug
+/TC.Bertoni.Resources/bin/Debug
+/TC.Bertoni.Resources/obj/Debug
+/TC.Bertoni.Service/bin/Debug
+/TC.Bertoni.Service/obj/Debug
