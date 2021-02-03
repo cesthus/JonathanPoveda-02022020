@@ -15,9 +15,28 @@
                 <td>@photo.title</td>
                 <td>@photo.url</td>
                 <td>
-                    @Html.ActionLink(@TC.Bertoni.Resources.Photo.ViewComments, "Comment", "GetCommentsByPhoto", new { photoId = photo.id });
+                    <input type="button" class="form-control" value="@TC.Bertoni.Resources.Photo.ViewComments" onclick="loadComments(@photo.id)" />
+                    <div id="showcomments">
+                    </div>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<script type="text/javascript">
+    function loadComments(photoId) {
+        $('#showcomments').empty();
+        $.ajax({
+            type: 'GET',
+            url: '/Comment/GetCommentsByPhoto/',
+            data: { "photoId": photoId },
+            success: function (dataResult) {
+                $('#showcomments').html(dataResult);
+            },
+            error: function (ex) {
+                console.log(ex);
+            }
+        });
+    }
+</script>

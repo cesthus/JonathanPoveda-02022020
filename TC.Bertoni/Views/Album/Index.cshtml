@@ -16,17 +16,14 @@
         @Html.DropDownList("albums", new SelectList(Model, "Id", "Title"), new { @class = "form-control" })
     </div>
     <div class="col-md-2">
-        <input type="button" id="btnViewAlbums" value="@TC.Bertoni.Resources.Album.SelectAlbum" />
+        <input type="button" id="btnViewAlbums" class="form-control btn btn-default" value="@TC.Bertoni.Resources.Album.SelectAlbum" />
     </div>
 </div>
 
-<div class="row">
-    <div id="divPhotos">
-    </div>
-</div>
+<hr />
 
 <div class="row">
-    <div id="divComments">
+    <div id="divPhotos" class="col-md-12">
     </div>
 </div>
 
@@ -35,7 +32,6 @@
         $(document).ready(function () {
             $('#btnViewAlbums').click(function () {
                 $('#divPhotos').empty();
-                $('#divComments').empty();
                 var albumID = $('#albums').val();
                 console.log("Album selected: " + albumID);
                 $('#divPhotos').load('/Photo/GetPhotoByAlbumId/${albumID}');
